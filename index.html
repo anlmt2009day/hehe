@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hình Trái Tim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .heart {
+            width: 150px;
+            height: 150px;
+            background-color: #ff4d4d;
+            position: relative;
+            transform: rotate(-45deg);
+            margin: 20px;
+            cursor: pointer;
+            animation: pulse 1s infinite;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            width: 150px;
+            height: 150px;
+            background-color: #ff4d4d;
+            border-radius: 75px;
+            position: absolute;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            left: 75px;
+            top: 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 36px;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+            transform: translateY(20px);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+            animation: thunder 0.5s;
+        }
+
+        @keyframes thunder {
+            0% { opacity: 0; }
+            25% { opacity: 1; }
+            50% { opacity: 0; }
+            75% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 5px #ffffff, 0 0 10px #ff4d4d, 0 0 20px #ff4d4d; }
+            50% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff4d4d; }
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            margin-top: 20px;
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <div class="heart" onclick="showMessage()"></div>
+        <div class="message" id="message">Đọc làm chó hahaa:))</div>
+    </div>
+
+    <script>
+        function showMessage() {
+            const message = document.getElementById('message');
+            message.classList.add('show');
+            message.style.animation = 'glow 1s infinite';  // Thêm hiệu ứng phát sáng
+        }
+    </script>
+
+</body>
+</html>
